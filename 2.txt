@@ -1,0 +1,17 @@
+name: Provision an EC2 Instance
+    hosts: localhost
+    connection: local
+    gather_facts: False
+    tags: provisioning
+
+    tasks:
+
+      - name: Launch the new EC2 Instance
+        local_action: ec2 
+                      group=default
+                      instance_type=t2.micro 
+                      image=ami-0080e4c5bc078760e
+                      wait=true 
+                      region=us-east-1
+                      keypair=Ec2KK2
+                      count=1
